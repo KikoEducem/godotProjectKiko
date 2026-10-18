@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://dtc6bklk0qp5r"]
+
+[ext_resource type="Script" uid="uid://7owtoqe8uuyv" path="res://scenes/components/hurt_component.gd" id="1_rmprs"]
+
+[node name="HurtComponentPic" type="Area2D"]
+light_mask = 16
+visibility_layer = 8
+collision_layer = 16
+collision_mask = 8
+script = ExtResource("1_rmprs")
+tool = 2
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

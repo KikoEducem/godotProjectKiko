@@ -1,0 +1,43 @@
+[gd_scene load_steps=4 format=3 uid="uid://dy0578pdvek7g"]
+
+[ext_resource type="Texture2D" uid="uid://d01n6705iofg7" path="res://assets/game/characters/Wizard.png" id="1_6ryn5"]
+[ext_resource type="Script" uid="uid://veq3uc42l61v" path="res://scenes/objects/trader/trader.gd" id="2_0852f"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_block"]
+radius = 9.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_trade"]
+radius = 26.0
+
+[node name="Trader" type="Sprite2D"]
+position = Vector2(0, -2)
+texture = ExtResource("1_6ryn5")
+region_enabled = true
+region_rect = Rect2(34, 6, 28, 26)
+script = ExtResource("2_0852f")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 6)
+shape = SubResource("CircleShape2D_block")
+
+[node name="TradeArea" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TradeArea"]
+position = Vector2(0, 6)
+shape = SubResource("CircleShape2D_trade")
+debug_color = Color(0.88, 0.78, 0.24, 0.35)
+
+[node name="PromptLabel" type="Label" parent="."]
+offset_left = -36.0
+offset_top = -34.0
+offset_right = 36.0
+offset_bottom = -8.0
+text = "[E] Trade"
+horizontal_alignment = 1
+vertical_alignment = 1

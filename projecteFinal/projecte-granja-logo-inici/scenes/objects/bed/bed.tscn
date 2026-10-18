@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Texture2D" path="res://assets/game/objects/basic_furniture.png" id="1_furniture"]
+[ext_resource type="Script" path="res://scenes/objects/bed/bed.gd" id="2_bed_script"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_block"]
+size = Vector2(12, 6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sleep"]
+size = Vector2(26, 20)
+
+[node name="Bed" type="Sprite2D"]
+texture = ExtResource("1_furniture")
+region_enabled = true
+region_rect = Rect2(0, 16, 16, 32)
+script = ExtResource("2_bed_script")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(0, 10)
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_block")
+
+[node name="SleepArea" type="Area2D" parent="."]
+position = Vector2(0, 4)
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SleepArea"]
+shape = SubResource("RectangleShape2D_sleep")
+debug_color = Color(0.24, 0.88, 0.72, 0.35)
+
+[node name="PromptLabel" type="Label" parent="."]
+offset_left = -40.0
+offset_top = -32.0
+offset_right = 40.0
+offset_bottom = -8.0
+text = "[E] Dormir"
+horizontal_alignment = 1
+vertical_alignment = 1

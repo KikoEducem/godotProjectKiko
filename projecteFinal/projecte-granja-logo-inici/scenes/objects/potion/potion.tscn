@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dpwe3728ux2mw"]
+
+[ext_resource type="Texture2D" uid="uid://brx2vjxr6boas" path="res://assets/game/objects/potions.png" id="1_dco3u"]
+[ext_resource type="Script" uid="uid://bqoy8ja7lg0s0" path="res://scenes/objects/potion/potion.gd" id="2_eh4ba"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wj66e"]
+radius = 6.0
+
+[node name="Potion" type="Sprite2D"]
+position = Vector2(0, -2)
+texture = ExtResource("1_dco3u")
+region_enabled = true
+region_rect = Rect2(19, 49, 10, 14)
+script = ExtResource("2_eh4ba")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("CircleShape2D_wj66e")

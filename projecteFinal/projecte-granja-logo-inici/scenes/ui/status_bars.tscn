@@ -1,0 +1,142 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scenes/ui/status_bars.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://assets/ui/custom/heart_gameboy.png" id="2_heart"]
+[ext_resource type="Texture2D" path="res://assets/ui/custom/lightning_gameboy.png" id="3_lightning"]
+[ext_resource type="Theme" uid="uid://biwl78twaqv01" path="res://scenes/ui/game_ui_theme.tres" id="4_theme"]
+
+[node name="StatusBars" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+mouse_filter = 2
+script = ExtResource("1_script")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 154.0
+offset_bottom = 48.0
+theme = ExtResource("4_theme")
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 2
+mouse_filter = 2
+
+[node name="HealthRow" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 4
+mouse_filter = 2
+
+[node name="HeartIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/HealthRow"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+texture = ExtResource("2_heart")
+stretch_mode = 5
+mouse_filter = 2
+
+[node name="HealthBarRoot" type="PanelContainer" parent="MarginContainer/VBoxContainer/HealthRow"]
+custom_minimum_size = Vector2(88, 16)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="HealthBarBg" type="ColorRect" parent="MarginContainer/VBoxContainer/HealthRow/HealthBarRoot"]
+custom_minimum_size = Vector2(88, 16)
+layout_mode = 2
+color = Color(0.121569, 0.0470588, 0.0862745, 1)
+mouse_filter = 2
+
+[node name="HealthFill" type="ColorRect" parent="MarginContainer/VBoxContainer/HealthRow/HealthBarRoot/HealthBarBg"]
+custom_minimum_size = Vector2(42, 10)
+layout_mode = 0
+offset_left = 2.0
+offset_top = 3.0
+offset_right = 44.0
+offset_bottom = 13.0
+color = Color(0.819608, 0.121569, 0.180392, 1)
+mouse_filter = 2
+
+[node name="HealthValue" type="Label" parent="MarginContainer/VBoxContainer/HealthRow"]
+custom_minimum_size = Vector2(36, 16)
+layout_mode = 2
+theme_type_variation = &"InventoryLabel"
+text = "50/100"
+vertical_alignment = 1
+mouse_filter = 2
+
+[node name="EnergyRow" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 4
+mouse_filter = 2
+
+[node name="Spacer" type="Control" parent="MarginContainer/VBoxContainer/EnergyRow"]
+custom_minimum_size = Vector2(16, 1)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="EnergyBarRoot" type="PanelContainer" parent="MarginContainer/VBoxContainer/EnergyRow"]
+custom_minimum_size = Vector2(60, 12)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="EnergyBarBg" type="ColorRect" parent="MarginContainer/VBoxContainer/EnergyRow/EnergyBarRoot"]
+custom_minimum_size = Vector2(60, 12)
+layout_mode = 2
+color = Color(0.121569, 0.0470588, 0.0862745, 1)
+mouse_filter = 2
+
+[node name="EnergyFill" type="ColorRect" parent="MarginContainer/VBoxContainer/EnergyRow/EnergyBarRoot/EnergyBarBg"]
+custom_minimum_size = Vector2(56, 8)
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 58.0
+offset_bottom = 10.0
+color = Color(0.937255, 0.741176, 0.231373, 1)
+mouse_filter = 2
+
+[node name="LightningIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/EnergyRow"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+texture = ExtResource("3_lightning")
+stretch_mode = 5
+mouse_filter = 2
+
+[node name="EnergyValue" type="Label" parent="MarginContainer/VBoxContainer/EnergyRow"]
+custom_minimum_size = Vector2(36, 16)
+layout_mode = 2
+theme_type_variation = &"InventoryLabel"
+text = "100/100"
+vertical_alignment = 1
+mouse_filter = 2
+
+[node name="TimerPanel" type="PanelContainer" parent="."]
+layout_mode = 0
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = -34.0
+offset_right = 84.0
+offset_bottom = -10.0
+mouse_filter = 2
+
+[node name="TimerLabel" type="Label" parent="TimerPanel"]
+layout_mode = 2
+theme_type_variation = &"InventoryLabel"
+text = "05:00"
+horizontal_alignment = 1
+vertical_alignment = 1
+mouse_filter = 2

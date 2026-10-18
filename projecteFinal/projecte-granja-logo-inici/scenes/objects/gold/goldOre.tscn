@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://b4lk0xevnpy0j"]
+
+[ext_resource type="Texture2D" uid="uid://drjf5hww6tbnu" path="res://assets/game/objects/minerals.png" id="1_w5x5e"]
+[ext_resource type="PackedScene" uid="uid://dn0h3jqdd3f5y" path="res://scenes/components/collectable_component.tscn" id="2_4hp2y"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oca81"]
+atlas = ExtResource("1_w5x5e")
+region = Rect2(173, 102, 15, 12)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k7uky"]
+radius = 4.1231055
+
+[node name="GoldOre" type="Sprite2D"]
+texture = SubResource("AtlasTexture_oca81")
+
+[node name="CollectableComponent" parent="." instance=ExtResource("2_4hp2y")]
+collectable_name = "gold"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectableComponent"]
+shape = SubResource("CircleShape2D_k7uky")
+debug_color = Color(0.62940943, 0.52861214, 0.117019095, 0.41960785)

@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://d36egoechiok4"]
+
+[ext_resource type="Texture2D" uid="uid://brx2vjxr6boas" path="res://assets/game/objects/potions.png" id="1_cb4pm"]
+[ext_resource type="PackedScene" uid="uid://dn0h3jqdd3f5y" path="res://scenes/components/collectable_component.tscn" id="2_cg4f1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oca81"]
+atlas = ExtResource("1_cb4pm")
+region = Rect2(19, 49, 10, 14)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k7uky"]
+radius = 4.1231055
+
+[node name="PotionObject" type="Sprite2D"]
+texture = SubResource("AtlasTexture_oca81")
+
+[node name="CollectableComponent" parent="." instance=ExtResource("2_cg4f1")]
+collectable_name = "potion"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectableComponent"]
+shape = SubResource("CircleShape2D_k7uky")
+debug_color = Color(0.62940943, 0.52861214, 0.117019095, 0.41960785)

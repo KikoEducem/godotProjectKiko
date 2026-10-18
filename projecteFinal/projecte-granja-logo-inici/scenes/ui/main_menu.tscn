@@ -1,0 +1,80 @@
+[gd_scene load_steps=4 format=3 uid="uid://b4jq81wvmvdpm"]
+
+[ext_resource type="Script" uid="uid://dbn7cx3yc5ijr" path="res://scenes/ui/main_menu.gd" id="1_script"]
+[ext_resource type="Theme" uid="uid://biwl78twaqv01" path="res://scenes/ui/game_ui_theme.tres" id="2_theme"]
+[ext_resource type="Texture2D" path="res://assets/ui/wildling_logo.png" id="3_logo"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_theme")
+script = ExtResource("1_script")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.16, 0.18, 0.14, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MenuPanel" type="PanelContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(640, 360)
+layout_mode = 2
+theme = ExtResource("2_theme")
+theme_type_variation = &"DarkWoodPanel"
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/MenuPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 22
+theme_override_constants/margin_top = 18
+theme_override_constants/margin_right = 22
+theme_override_constants/margin_bottom = 18
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/MenuPanel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Logo" type="TextureRect" parent="CenterContainer/MenuPanel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(560, 230)
+layout_mode = 2
+texture = ExtResource("3_logo")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TitleLabel" type="Label" parent="CenterContainer/MenuPanel/MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+text = "Projecte Granja"
+horizontal_alignment = 1
+
+[node name="SubtitleLabel" type="Label" parent="CenterContainer/MenuPanel/MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+text = "Aventura, recursos i batalla final"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="StartButton" type="Button" parent="CenterContainer/MenuPanel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 36)
+layout_mode = 2
+text = "Iniciar"
+
+[node name="HintLabel" type="Label" parent="CenterContainer/MenuPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Prem ESPAI o ENTER per continuar"
+horizontal_alignment = 1
+autowrap_mode = 2

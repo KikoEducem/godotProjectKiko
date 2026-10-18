@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://ckans72ytnyyx"]
+
+[ext_resource type="Texture2D" uid="uid://drjf5hww6tbnu" path="res://assets/game/objects/minerals.png" id="1_77y2y"]
+[ext_resource type="PackedScene" uid="uid://dn0h3jqdd3f5y" path="res://scenes/components/collectable_component.tscn" id="2_sti7d"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oca81"]
+atlas = ExtResource("1_77y2y")
+region = Rect2(151, 53, 11, 14)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k7uky"]
+radius = 4.1231055
+
+[node name="DiamondOre" type="Sprite2D"]
+texture = SubResource("AtlasTexture_oca81")
+
+[node name="CollectableComponent" parent="." instance=ExtResource("2_sti7d")]
+collectable_name = "diamond"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectableComponent"]
+shape = SubResource("CircleShape2D_k7uky")
+debug_color = Color(0.62940943, 0.52861214, 0.117019095, 0.41960785)

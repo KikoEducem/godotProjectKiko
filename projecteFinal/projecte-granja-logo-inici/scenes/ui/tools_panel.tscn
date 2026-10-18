@@ -1,0 +1,75 @@
+[gd_scene load_steps=11 format=3 uid="uid://dp4ymdcuqdqc1"]
+
+[ext_resource type="Theme" uid="uid://biwl78twaqv01" path="res://scenes/ui/game_ui_theme.tres" id="1_2yiqu"]
+[ext_resource type="Script" uid="uid://cjjt7skiy2odx" path="res://scenes/ui/tools_panel.gd" id="2_gbtgy"]
+[ext_resource type="Texture2D" uid="uid://d1sm7vlmoqgti" path="res://assets/game/objects/basic_tools_and_meterials.png" id="2_xkgdf"]
+[ext_resource type="Texture2D" uid="uid://k50y6ggqa2er" path="res://assets/game/objects/Food.png" id="3_0jxvs"]
+[ext_resource type="Texture2D" uid="uid://crchly8awljby" path="res://assets/game/objects/pickaxe.png" id="4_a6726"]
+[ext_resource type="Texture2D" uid="uid://brx2vjxr6boas" path="res://assets/game/objects/potions.png" id="4_gbtgy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a7ivs"]
+atlas = ExtResource("2_xkgdf")
+region = Rect2(16, 0, 16, 16)
+margin = Rect2(4, 0, 5, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gbtgy"]
+atlas = ExtResource("4_a6726")
+region = Rect2(0, 0, 16, 16)
+margin = Rect2(4, 0, 5, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a6726"]
+atlas = ExtResource("3_0jxvs")
+region = Rect2(0, 64, 16, 16)
+margin = Rect2(4, 0, 5, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3neg6"]
+atlas = ExtResource("4_gbtgy")
+region = Rect2(16, 48, 16, 16)
+margin = Rect2(4, 0, 5, 1)
+
+[node name="ToolsPanel" type="PanelContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("1_2yiqu")
+theme_type_variation = &"DarkWoodPanel"
+script = ExtResource("2_gbtgy")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="ToolAxe" type="Button" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 2
+theme_type_variation = &"ToolButton"
+icon = SubResource("AtlasTexture_a7ivs")
+
+[node name="ToolTill" type="Button" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 2
+theme_type_variation = &"ToolButton"
+icon = SubResource("AtlasTexture_gbtgy")
+
+[node name="FoodApple" type="Button" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 2
+theme_type_variation = &"ToolButton"
+icon = SubResource("AtlasTexture_a6726")
+
+[node name="Potions" type="Button" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 2
+theme_type_variation = &"ToolButton"
+icon = SubResource("AtlasTexture_3neg6")
+icon_alignment = 1
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/ToolAxe" to="." method="_on_tool_axe_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/ToolTill" to="." method="_on_tool_till_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/FoodApple" to="." method="_on_food_apple_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/Potions" to="." method="_on_potions_pressed"]

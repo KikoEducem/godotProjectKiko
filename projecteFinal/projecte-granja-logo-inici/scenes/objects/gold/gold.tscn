@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=3 uid="uid://02euhmyflkax"]
+
+[ext_resource type="Texture2D" uid="uid://drjf5hww6tbnu" path="res://assets/game/objects/minerals.png" id="1_yn28a"]
+[ext_resource type="Script" uid="uid://baw7vyndq54qm" path="res://scenes/objects/gold/gold.gd" id="2_eekr5"]
+[ext_resource type="PackedScene" uid="uid://07jte23n60yo" path="res://scenes/components/damage_component.tscn" id="4_iyykp"]
+[ext_resource type="PackedScene" uid="uid://dtc6bklk0qp5r" path="res://scenes/components/hurt_componentPic.tscn" id="4_yn28a"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wj66e"]
+radius = 5.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ms1l0"]
+radius = 7.28011
+
+[node name="Gold" type="Sprite2D"]
+position = Vector2(0, -2)
+texture = ExtResource("1_yn28a")
+region_enabled = true
+region_rect = Rect2(171, 76, 19, 15)
+script = ExtResource("2_eekr5")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_wj66e")
+
+[node name="DamageComponent" parent="." instance=ExtResource("4_iyykp")]
+max_damage = 5
+
+[node name="HurtComponentPic" parent="." instance=ExtResource("4_yn28a")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtComponentPic"]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_ms1l0")
+debug_color = Color(0.78342426, 0.2219573, 0.91361105, 0.41960785)

@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Texture2D" uid="uid://b55iucutua43o" path="res://assets/game/objects/basic_grass_biom_things.png" id="1_tex"]
+[ext_resource type="PackedScene" uid="uid://dn0h3jqdd3f5y" path="res://scenes/components/collectable_component.tscn" id="2_collect"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mini"]
+atlas = ExtResource("1_tex")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mini"]
+radius = 4.0
+
+[node name="MiniMushroom" type="Sprite2D"]
+texture = SubResource("AtlasTexture_mini")
+
+[node name="CollectableComponent" parent="." instance=ExtResource("2_collect")]
+collectable_name = "mushroom"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectableComponent"]
+shape = SubResource("CircleShape2D_mini")
+debug_color = Color(0.62940943, 0.52861214, 0.117019095, 0.41960785)

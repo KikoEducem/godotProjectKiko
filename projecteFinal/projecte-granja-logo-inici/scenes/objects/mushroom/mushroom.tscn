@@ -1,0 +1,34 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="Texture2D" uid="uid://b55iucutua43o" path="res://assets/game/objects/basic_grass_biom_things.png" id="1_tex"]
+[ext_resource type="Script" path="res://scenes/objects/mushroom/mushroom.gd" id="2_script"]
+[ext_resource type="PackedScene" uid="uid://07jte23n60yo" path="res://scenes/components/damage_component.tscn" id="3_damage"]
+[ext_resource type="PackedScene" uid="uid://dtc6bklk0qp5r" path="res://scenes/components/hurt_componentPic.tscn" id="4_hurt"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_block"]
+radius = 4.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hurt"]
+radius = 6.0
+
+[node name="Mushroom" type="Sprite2D"]
+position = Vector2(0, -2)
+texture = ExtResource("1_tex")
+region_enabled = true
+region_rect = Rect2(80, 0, 16, 16)
+script = ExtResource("2_script")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 2)
+shape = SubResource("CircleShape2D_block")
+
+[node name="DamageComponent" parent="." instance=ExtResource("3_damage")]
+max_damage = 2
+
+[node name="HurtComponentPic" parent="." instance=ExtResource("4_hurt")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtComponentPic"]
+shape = SubResource("CircleShape2D_hurt")
+debug_color = Color(0.78342426, 0.2219573, 0.91361105, 0.41960785)

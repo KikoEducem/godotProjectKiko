@@ -1,0 +1,111 @@
+[gd_scene load_steps=16 format=3 uid="uid://0evf8hwfbqdi"]
+
+[ext_resource type="Script" uid="uid://cqpbdidxjqw3t" path="res://scenes/characters/ghost.gd" id="1_t3xhi"]
+[ext_resource type="Texture2D" uid="uid://bm5tm1rnul3r8" path="res://scenes/worlds/MiniGhost_Idle.png" id="2_dvybq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_43fb8"]
+atlas = ExtResource("2_dvybq")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ncfov"]
+atlas = ExtResource("2_dvybq")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fq2nl"]
+atlas = ExtResource("2_dvybq")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ac3n8"]
+atlas = ExtResource("2_dvybq")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_phps6"]
+atlas = ExtResource("2_dvybq")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uoqqj"]
+atlas = ExtResource("2_dvybq")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x0d3k"]
+atlas = ExtResource("2_dvybq")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ec2p"]
+atlas = ExtResource("2_dvybq")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tt5do"]
+atlas = ExtResource("2_dvybq")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bean3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_43fb8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ncfov")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fq2nl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ac3n8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_phps6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uoqqj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x0d3k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ec2p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tt5do")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6umax"]
+radius = 11.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r2q5w"]
+radius = 13.0
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_t3xhi"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+
+[node name="Ghost" type="CharacterBody2D"]
+collision_mask = 3
+script = ExtResource("1_t3xhi")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 0.5)
+scale = Vector2(1, 1.03125)
+sprite_frames = SubResource("SpriteFrames_bean3")
+animation = &"walk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_6umax")
+one_way_collision = true
+
+[node name="TouchArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TouchArea"]
+shape = SubResource("CircleShape2D_r2q5w")
+
+
+[node name="Sync" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_t3xhi")

@@ -1,0 +1,96 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Theme" uid="uid://biwl78twaqv01" path="res://scenes/ui/game_ui_theme.tres" id="1_theme"]
+[ext_resource type="Script" path="res://scenes/ui/trade_panel.gd" id="2_script"]
+
+[node name="TradePanel" type="PanelContainer"]
+visible = false
+offset_left = 176.0
+offset_top = 70.0
+offset_right = 464.0
+offset_bottom = 286.0
+theme = ExtResource("1_theme")
+theme_type_variation = &"DarkWoodPanel"
+script = ExtResource("2_script")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="TitleLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Trader"
+horizontal_alignment = 1
+
+[node name="InfoLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Canvia minerals per millores"
+horizontal_alignment = 1
+
+[node name="AxeDamageLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Mal del Axe: 1"
+
+[node name="TillDamageLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Mal del Till: 1"
+
+[node name="GoldTrade" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="GoldTextLabel" type="Label" parent="MarginContainer/VBoxContainer/GoldTrade"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "1 Gold = +1 Axe"
+
+[node name="GoldCostLabel" type="Label" parent="MarginContainer/VBoxContainer/GoldTrade"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Tens 0 gold"
+
+[node name="BuyAxeButton" type="Button" parent="MarginContainer/VBoxContainer/GoldTrade"]
+layout_mode = 2
+text = "Comprar"
+
+[node name="RubiTrade" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="RubiTextLabel" type="Label" parent="MarginContainer/VBoxContainer/RubiTrade"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "1 Rubi = +1 Till"
+
+[node name="RubiCostLabel" type="Label" parent="MarginContainer/VBoxContainer/RubiTrade"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Tens 0 rubi"
+
+[node name="BuyTillButton" type="Button" parent="MarginContainer/VBoxContainer/RubiTrade"]
+layout_mode = 2
+text = "Comprar"
+
+[node name="MessageLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Apropa't al trader i compra millores"
+horizontal_alignment = 1
+
+[node name="CloseButton" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Tancar"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/GoldTrade/BuyAxeButton" to="." method="_on_buy_axe_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/RubiTrade/BuyTillButton" to="." method="_on_buy_till_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/CloseButton" to="." method="_on_close_button_pressed"]
